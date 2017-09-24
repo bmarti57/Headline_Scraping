@@ -42,8 +42,8 @@ db.once("open", function() {
 });
 
 //Require controller.js
-var route = require("./controllers/controller.js");
-app.use("/", route);
+var routes = require("./controllers/controller.js");
+app.use("/", routes);
 
 //Add Routes to GET and POST scraped article HERE
 
