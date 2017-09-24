@@ -1,8 +1,11 @@
 //Dependencies
 var express = require("express");
 var bodyParser = require("body-parser");
+var logger = require("morgan");
 var mongoose = require("mongoose");
 //Requiring Models
+var Note = require("./models/notes.js");
+var Article = require("./models/articles.js");
 
 //Scraping Tools
 var request = require("request");
@@ -13,6 +16,7 @@ mongoose.Promise = Promise;
 //Initialize Express
 var app = express();
 
+app.use(logger("dev"));
 app.use(bodyParser.urlencoded({ extended: false }));
 
 //Public Static Directory
@@ -37,8 +41,9 @@ db.once("open", function() {
     console.log("Mongoose connection successful.");
 });
 
-//Add Scraping Routes HERE
-
+//Require controller.js
+var route = require("./controllers/controller.js");
+app.use("/", route);
 
 //Add Routes to GET and POST scraped article HERE
 
