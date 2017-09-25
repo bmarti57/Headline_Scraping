@@ -3,13 +3,14 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var logger = require("morgan");
 var mongoose = require("mongoose");
-//Requiring Models
-var Note = require("./models/notes.js");
-var Article = require("./models/articles.js");
-
 //Scraping Tools
 var request = require("request");
 var cheerio = require("cheerio");
+//Requiring Models
+var Note = require("./models/Note.js");
+var Article = require("./models/Article.js");
+
+
 
 mongoose.Promise = Promise;
 
@@ -43,10 +44,10 @@ db.once("open", function() {
 
 //Require controller.js
 var routes = require("./controllers/controller.js");
-app.use("/", routes);
+//app.use("/", routes);
 
 //Add Routes to GET and POST scraped article HERE
-
-app.listen(3000, function() {
-    console.log("App is running on port 3000.")
+var port = process.env.PORT || 3000;
+app.listen(port, function() {
+    console.log("App is running on port " + port);
 });

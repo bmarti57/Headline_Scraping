@@ -3,9 +3,10 @@ var express = require("express");
 var path = require("path");
 var request = require("request");
 var cheerio = require("cheerio");
+var app = express();
 
-var Note = require("./models/notes.js");
-var Article = require("./models/articles.js");
+var Note = require("../models/Note.js");
+var Article = require("../models/Article.js");
 
 app.get("/scrape", function(req, res) {
     request("https://www.nytimes.com/", function(error, response, html) {
