@@ -6,16 +6,15 @@ var mongoose = require("mongoose");
 //Scraping Tools
 var request = require("request");
 var cheerio = require("cheerio");
+
+//Initialize Express
+var app = express();
+
 //Requiring Models
 var Note = require("./models/Note.js");
 var Article = require("./models/Article.js");
 
-
-
 mongoose.Promise = Promise;
-
-//Initialize Express
-var app = express();
 
 app.use(logger("dev"));
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -43,8 +42,8 @@ db.once("open", function() {
 });
 
 //Require controller.js
-var routes = require("./controllers/controller.js");
-//app.use("/", routes);
+var router = require("./controllers/controller.js");
+app.use("/", router);
 
 //Add Routes to GET and POST scraped article HERE
 var port = process.env.PORT || 3000;

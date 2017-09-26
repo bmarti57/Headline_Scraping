@@ -1,5 +1,37 @@
-<div id="wrapper">
-    <h1>Headline Scrapper</h1>
+    <h1>Headline Scraping</h1><br><br>
+<div id="wrapper">    
     <div id="articles"></div>
     <div id="notes"></div>
 </div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <h2>Articles</h2>
+            {{#each articles}}
+            <ul>
+                <li>
+                    <h3>{{title}}</h3>
+                    <h4><a href="{{link}}" target="_new">Click here</a> to read the full article.</h4>
+                    <p>{{summary}}</p>
+                </li>
+            </ul>
+            {{/each}}
+        </div>
+        <div class="col-sm-6">
+        <h2>Add a Comment</h2><br><br>
+            <div class="row">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-4">
+                    <form>
+                        <h4>Name: </h4>
+                        <input id="author" name="name" type="text">
+                        <h4>Comment: </h4>
+                        <textarea id="comment" name="comment"></textarea>
+                    </form>
+                </div>    
+                <div class="col-sm-4"></div>
+        </div>
+    </div>
+</div>
+
