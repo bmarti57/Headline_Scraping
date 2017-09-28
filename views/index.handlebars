@@ -1,37 +1,30 @@
-    <h1>Headline Scraping</h1><br><br>
-<div id="wrapper">    
-    <div id="articles"></div>
-    <div id="notes"></div>
-</div>
+<h1>Headline Scraping</h1>
+
+<p>1. Click "Scrape Article" to Get Articles From the NY Times.</p>
+<p>2. Return to the Home Page.</p>
+<p>3. Click the "Articles" Button to Display Articles.</p>
+<p>4. Click on the Article to Add a Comment.</p>
 
 <div class="container">
     <div class="row">
-        <div class="col-sm-6">
-            <h2>Articles</h2>
-            {{#each articles}}
-            <ul>
-                <li>
-                    <h3>{{title}}</h3>
-                    <h4><a href="{{link}}" target="_new">Click here</a> to read the full article.</h4>
-                    <p>{{summary}}</p>
-                </li>
-            </ul>
-            {{/each}}
+        <div class="col-sm-6" style="text-align:center;">
+            <a href="/scrape"><button class="btn btn-lg btn-success">Scrape Articles</button></a>
         </div>
-        <div class="col-sm-6">
-        <h2>Add a Comment</h2><br><br>
-            <div class="row">
-                <div class="col-sm-4"></div>
-                <div class="col-sm-4">
-                    <form>
-                        <h4>Name: </h4>
-                        <input id="author" name="name" type="text">
-                        <h4>Comment: </h4>
-                        <textarea id="comment" name="comment"></textarea>
-                    </form>
-                </div>    
-                <div class="col-sm-4"></div>
+        <div class="col-sm-6" style="text-align:center;">
+            <a href="/articles"><button class="btn btn-lg btn-success">View Articles</button></a>
         </div>
     </div>
-</div>
+</div>                
+
+<h2>Articles</h2>
+    {{#each articles}}
+        <ul>
+             <li>
+                <h3>{{title}}</h3>
+                <h4><a href="{{link}}" target="_new">Click here</a> to read the full article.</h4>
+                 <p>{{summary}}</p>
+            </li>
+        </ul>
+    {{/each}}
+
 

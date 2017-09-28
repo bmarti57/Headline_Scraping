@@ -1,10 +1,25 @@
 body {
 	font-family: 'Source Sans Pro', sans-serif;
-	background: #311d13;
+	background: #475666;
 	color: white;
 }
 
 h1, h2 {
+	text-align: center;
+	text-decoration: underline;
+}
+
+p {
+	text-align:	center;
+	font-style: italic;
+	font-size: 15px;
+}
+
+ul, li {
+	text-align: center;
+}
+
+button {
 	text-align: center;
 }
 

@@ -9,7 +9,6 @@ var Note = require("../models/Note.js");
 var Article = require("../models/Article.js");
 
 router.get('/', function (req, res){
-    
           res.render("index");
       });
    
@@ -24,7 +23,7 @@ router.get("/scrape", function(req, res) {
             results.link = $(this).children("a").attr("href");
             results.summary = $(this).children("p").attr("summary");
 
-            var entry = new Article(results);
+            var entry = new Article (results);
             entry.save(function(err, doc) {
                 if (err) {
                     console.log(err);
@@ -36,15 +35,18 @@ router.get("/scrape", function(req, res) {
 }); //app.get
 
 // GET the scraped articles from mongoDB
-router.get("/articles", function(req, res) {
-    Article.find({}, function(error, doc) {
-        if(error) {
+router.get('/articles', function (req, res){
+    Article.find()
+    .populate('notes')
+    .exec(function(error, doc){
+        if (error){
             console.log(error);
         } else {
-            res.json(doc);
-        }
+            var hbsObject = {articles: doc}
+            res.render('index', hbsObject);
+          }
+        });
     });
-});
 
 router.get("/articles/:id", function(req, res) {
     Article.findOne({ "_id": req.params.id })
