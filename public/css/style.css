@@ -23,3 +23,15 @@ button {
 	text-align: center;
 }
 
+.modal-header, .modal-body, .modal-footer {
+	color: black;
+	font-style: bold;
+}
+
+input, textarea {
+	width: 100%;
+}
+
+h4 {
+	font-style: bold;
+}

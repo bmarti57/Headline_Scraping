@@ -1,19 +1,20 @@
 // Grabs the article json
 $.getJSON("/articles", function(data) {
     for (var i = 0; i < data.length; i++) {
-        $("articles").append("<p data-id=" + data[i].id + "'>" + data[i].title + "<br />" + data[i].link + "</p>");
+        $("articles").append("<h3 data-toggle='modal' data-target='#myModal' data-id=" + data[i].id + "'>" + data[i].title + "<br />" + data[i].link + "</h3>");
     }
 });
 
 // Click p tag
-$(document).on("click", "p", function() {
+$(document).on("click", "h3", function() {
+    $("#myModal").modal('show');
     $("#notes").empty();
 
     var thisId = $(this).attr("data-id");
 // ajax call for the Article
     $.ajax({
         method: "GET",
-        url: "/articles/" + thidId
+        url: "/articles/" + this.Id
     })
     .done(function(data) {
         console.log(data);
@@ -47,7 +48,5 @@ $(document).on("click", "#savenote", function() {
         console.log(data);
         $("#notes").empty();
       });
-  
-    $("#titleinput").val("");
-    $("#bodyinput").val("");
+      $("#myModal").modal('hide');
   });

@@ -3,6 +3,26 @@
 <p>1. Click the "Articles" Button to Display Articles.</p>
 <p>2. Click on the Article to Add a Comment.</p>
 
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" id="notes">
+                <h2>Notes</h2>
+            </div>
+            <div class="modal-body" id="notes">
+                <h4>Title: </h4>
+                <input type="text" id="titleinput"></input>
+                <h4>Notes: </h4>
+                <textarea rows="10" columns="50" id="bodyinput"></textarea>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary btn-lg" id="savenote">Save</button>
+                <button type="button" class="btn btn-danger btn-lg" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="container">
     <div class="row">
         <div class="col-sm-12" style="text-align:center;">
@@ -15,9 +35,8 @@
     {{#each articles}}
         <ul>
              <li>
-                <h3>{{title}}</h3>
+                <h3 data-toggle='modal' data-target='#myModal'>{{title}}</h3>
                 <h4><a href="{{link}}" target="_new">Click here</a> to read the full article.</h4>
-                 <p>{{summary}}</p>
             </li>
         </ul>
     {{/each}}
